@@ -11,6 +11,8 @@
    `npm i @nestjs/cli`
 4. Lenvantar la base de datos
    `docker-compose up -d`
+5. Reconstruir la base de datos con la semilla
+   `http://{{host}}:{{port}}/api/v2/seed`
 
 ## Stack Usado
 
