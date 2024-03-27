@@ -16,6 +16,16 @@ export class PokemonService {
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
   ) {}
+  async insertMany(createPokemonDto: CreatePokemonDto[]) {
+    // createPokemonDto.name = createPokemonDto.name.toLocaleLowerCase();
+    try {
+      await this.pokemonModel.deleteMany({});
+      const pokemon = await this.pokemonModel.insertMany(createPokemonDto);
+      return pokemon;
+    } catch (error) {
+      this.handleExceptions(error);
+    }
+  }
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLocaleLowerCase();
     try {
